@@ -27,6 +27,8 @@ class Row {
 
 class DataFrame {
 
+
+
     public:
         vector<Row> rows;
         int size(){ 
@@ -114,6 +116,8 @@ class Filter : public Operator {
 
         DataFrame* execute() override {
             DataFrame* result;
+
+
             while ((result = child->execute())) {
                 DataFrame filtered = apply_filter(*result, condition);
                 if (filtered.size() > 0)
@@ -125,6 +129,7 @@ class Filter : public Operator {
 
 class Scanner : public Operator {
 
+    //buffer of
     vector<Row> data;
 
     //index variable will keep track of where we currenctly are
