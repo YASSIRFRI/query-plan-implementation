@@ -76,14 +76,14 @@ class Join : public Operator {
 
         DataFrame * execute() override {
 
-            static vector<Row> build_rows;
+            static vector<Row> result;
             static bool built = false;
 
             if (!built) {
                 DataFrame* part;
                 while ((part = tobuild->execute())) {
                     for (Row &r : part->rows)
-                        build_rows.push_back(r);
+                        result.push_back(r);
                 }
                 built = true;
             }
@@ -95,7 +95,7 @@ class Join : public Operator {
 
             DataFrame* out = new DataFrame();
             for (Row &p : chunk->rows) {
-                for (Row &b : build_rows) {
+                for (Row &b : result) {
                     if (p.a == b.a)
                         out->rows.push_back(p);
                 }
