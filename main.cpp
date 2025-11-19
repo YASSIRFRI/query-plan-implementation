@@ -68,6 +68,8 @@ class Join : public Operator {
     public:
 
         Join(Operator* b, Operator* a) {
+            //need to decide beforehand which is what? depneding on size, assume smaller relation is the first
+            //argument
             tobuild = b;
             toask   = a;
         }
