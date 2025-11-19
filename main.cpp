@@ -13,7 +13,9 @@ using namespace std;
 
 class Row {
 
-
+    //TO DO:
+    /*
+    */
     //hardocoded 3 ints for the moment
     public:
         int a;
@@ -61,6 +63,9 @@ class Operator{
 
 
 class Join : public Operator {
+
+    //assuming we build 1 relation intirely then search matches on the other (large one)
+    //TO DO: child ops retur sorted tuples
 
     Operator * tobuild;
     Operator * toask;
