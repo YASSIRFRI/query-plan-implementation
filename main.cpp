@@ -166,6 +166,8 @@ public:
 
 int main(){
 
+
+
     vector<Row> first{{1,2,3}, {5,6,7}, {8,9,10}};
     vector<Row> second{{1,2,2}, {3,3,5}};
 
@@ -180,14 +182,20 @@ int main(){
     };
 
 
+
+
+
+
+
     Operator* filter_test = new Filter(second_scanner, lambda);
     Operator* join_test = new Join(first_scanner, filter_test);
-    DataFrame* df;
+        DataFrame* df;
 
 
     while((df = join_test->execute())) {
-        for (Row &r : df->rows)
+        for (Row &r : df->rows){
             cout<<r.a<<" "<<r.b<<" "<<r.c<<"\n";
+        }
     }
     return 0;
 }
